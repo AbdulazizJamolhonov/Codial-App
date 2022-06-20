@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="developer.abdulaziz.my_codial_app.Fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_kurslarFragment"
+            app:destination="@id/kurslarFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_mentorlarFragment"
+            app:destination="@id/mentorlarFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_guruhlarFragment"
+            app:destination="@id/guruhlarFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/kurslarFragment"
+        android:name="developer.abdulaziz.my_codial_app.Fragments.Kurslar.KurslarFragment"
+        android:label="fragment_kurslar"
+        tools:layout="@layout/fragment_kurslar">
+        <action
+            android:id="@+id/action_kurslarFragment_to_kurslarAboutFragment"
+            app:destination="@id/kurslarAboutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/kurslarAboutFragment"
+        android:name="developer.abdulaziz.my_codial_app.Fragments.Kurslar.KurslarAboutFragment"
+        android:label="fragment_kurslar_about"
+        tools:layout="@layout/fragment_kurslar_about" />
+    <fragment
+        android:id="@+id/mentorlarFragment"
+        android:name="developer.abdulaziz.my_codial_app.Fragments.Mentorlar.MentorlarFragment"
+        android:label="fragment_mentorlar"
+        tools:layout="@layout/fragment_mentorlar">
+        <action
+            android:id="@+id/action_mentorlarFragment_to_mentorShowFragment"
+            app:destination="@id/mentorShowFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mentorAddFragment"
+        android:name="developer.abdulaziz.my_codial_app.Fragments.Mentorlar.MentorAddFragment"
+        android:label="fragment_mentor_add"
+        tools:layout="@layout/fragment_mentor_add" />
+    <fragment
+        android:id="@+id/guruhlarFragment"
+        android:name="developer.abdulaziz.my_codial_app.Fragments.Guruhlar.GuruhlarFragment"
+        android:label="fragment_guruhlar"
+        tools:layout="@layout/fragment_guruhlar">
+        <action
+            android:id="@+id/action_guruhlarFragment_to_gruppalarShowFragment"
+            app:destination="@id/gruppalarShowFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gruppalarShowFragment"
+        android:name="developer.abdulaziz.my_codial_app.Fragments.Guruhlar.GruppalarShowFragment"
+        android:label="fragment_gruppalar_show"
+        tools:layout="@layout/fragment_gruppalar_show">
+        <action
+            android:id="@+id/action_gruppalarShowFragment_to_groupPagerFragment"
+            app:destination="@id/groupPagerFragment" />
+        <action
+            android:id="@+id/action_gruppalarShowFragment_to_groupPagerFragment2"
+            app:destination="@id/groupPagerFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/groupPagerFragment"
+        android:name="developer.abdulaziz.my_codial_app.Fragments.Guruhlar.GroupPagerFragment"
+        android:label="fragment_group_pager"
+        tools:layout="@layout/fragment_group_pager">
+        <action
+            android:id="@+id/action_groupPagerFragment_to_groupAddFragment"
+            app:destination="@id/groupAddFragment" />
+        <action
+            android:id="@+id/action_groupPagerFragment_to_groupDarsFragment"
+            app:destination="@id/groupDarsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/groupPagerFragment2"
+        android:name="developer.abdulaziz.my_codial_app.Fragments.Guruhlar.GroupPagerFragment2"
+        android:label="fragment_group_pager2"
+        tools:layout="@layout/fragment_group_pager2" >
+        <action
+            android:id="@+id/action_groupPagerFragment2_to_groupDarsFragment"
+            app:destination="@id/groupDarsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/groupAddFragment"
+        android:name="developer.abdulaziz.my_codial_app.Fragments.Guruhlar.GroupAddFragment"
+        android:label="fragment_group_add"
+        tools:layout="@layout/fragment_group_add" />
+    <fragment
+        android:id="@+id/mentorShowFragment"
+        android:name="developer.abdulaziz.my_codial_app.Fragments.Mentorlar.MentorShowFragment"
+        android:label="fragment_mentor_show"
+        tools:layout="@layout/fragment_mentor_show" >
+        <action
+            android:id="@+id/action_mentorShowFragment_to_mentorAddFragment"
+            app:destination="@id/mentorAddFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/groupDarsFragment"
+        android:name="developer.abdulaziz.my_codial_app.Fragments.Guruhlar.GroupDarsFragment"
+        android:label="fragment_group_dars"
+        tools:layout="@layout/fragment_group_dars" />
+</navigation>
