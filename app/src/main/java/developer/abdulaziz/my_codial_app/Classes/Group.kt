@@ -7,6 +7,7 @@ class Group {
     var time: String? = null
     var date: String? = null
     var openClose: Int? = null
+    var myKurs: Int? = null
 
     constructor(
         id: Int?,
@@ -14,7 +15,8 @@ class Group {
         mentor: Mentor?,
         time: String?,
         date: String?,
-        openClose: Int?
+        openClose: Int?,
+        myKurs: Int?
     ) {
         this.id = id
         this.name = name
@@ -22,14 +24,24 @@ class Group {
         this.time = time
         this.date = date
         this.openClose = openClose
+        this.myKurs = myKurs
     }
 
-    constructor(name: String?, mentor: Mentor?, time: String?, date: String?, openClose: Int?) {
+    constructor(
+        name: String?,
+        mentor: Mentor?,
+        time: String?,
+        date: String?,
+        openClose: Int?,
+        myKurs: Int?
+    ) {
         this.name = name
         this.mentor = mentor
         this.time = time
         this.date = date
         this.openClose = openClose
+        this.myKurs = myKurs
     }
+
     constructor()
 }

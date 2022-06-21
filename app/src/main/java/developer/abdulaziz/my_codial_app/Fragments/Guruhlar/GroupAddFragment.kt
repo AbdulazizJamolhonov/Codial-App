@@ -23,7 +23,7 @@ class GroupAddFragment : Fragment() {
             val listMentorName = ArrayList<String>()
             val listMentor = myDbHelper.readMentor()
             for (i in listMentor) {
-                if (i.myKurs == MyObject.positionKurs) listMentorName.add(i.name.toString())
+                if (i.myKurs == MyObject.positionKurs) listMentorName.add("${i.surname} ${i.name}")
             }
             spinnerMentor.adapter =
                 ArrayAdapter(
@@ -58,7 +58,8 @@ class GroupAddFragment : Fragment() {
                         mentor,
                         time,
                         date,
-                        0
+                        0,
+                        MyObject.positionKurs
                     )
                     myDbHelper.createGroup(group)
                     findNavController().popBackStack()

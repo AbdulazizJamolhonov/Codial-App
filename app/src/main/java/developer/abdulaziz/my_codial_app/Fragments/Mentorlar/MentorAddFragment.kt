@@ -30,9 +30,9 @@ class MentorAddFragment : Fragment() {
             save.setOnClickListener {
                 val surname = mentorSurname.text.toString()
                 val name = mentorName.text.toString()
-                val lastname = mentorLastname.text.toString()
-                if (surname.isNotEmpty() && name.isNotEmpty() && lastname.isNotEmpty()) {
-                    val mentor = Mentor(surname, name, lastname, MyObject.positionKurs)
+                val number = mentorNumber.text.toString()
+                if (surname.isNotEmpty() && name.isNotEmpty() && number.isNotEmpty()) {
+                    val mentor = Mentor(surname, name, number, MyObject.positionKurs)
                     myDbHelper.createMentor(mentor)
                     list.add(mentor)
                     findNavController().popBackStack()

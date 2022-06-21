@@ -26,7 +26,7 @@
         android:foreground="?selectableItemBackground"
         app:cardCornerRadius="@dimen/_20sdp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHeight_percent="0.175"
+        app:layout_constraintHeight_percent="0.17"
         app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -54,7 +54,7 @@
                 android:gravity="center"
                 android:text="Kurslar"
                 android:textColor="@color/yellow"
-                android:textSize="@dimen/_20ssp" />
+                android:textSize="@dimen/_18ssp" />
 
         </LinearLayout>
 
@@ -69,7 +69,7 @@
         android:foreground="?selectableItemBackground"
         app:cardCornerRadius="@dimen/_20sdp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHeight_percent="0.175"
+        app:layout_constraintHeight_percent="0.17"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -97,7 +97,7 @@
                 android:gravity="center"
                 android:text="Guruhlar"
                 android:textColor="@color/yellow"
-                android:textSize="@dimen/_20ssp" />
+                android:textSize="@dimen/_18ssp" />
 
         </LinearLayout>
 
@@ -112,7 +112,7 @@
         android:foreground="?selectableItemBackground"
         app:cardCornerRadius="@dimen/_20sdp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHeight_percent="0.175"
+        app:layout_constraintHeight_percent="0.17"
         app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -140,7 +140,7 @@
                 android:gravity="center"
                 android:text="Mentorlar"
                 android:textColor="@color/yellow"
-                android:textSize="@dimen/_20ssp" />
+                android:textSize="@dimen/_18ssp" />
 
         </LinearLayout>
 

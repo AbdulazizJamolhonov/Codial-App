@@ -85,7 +85,7 @@
         android:id="@+id/groupPagerFragment2"
         android:name="developer.abdulaziz.my_codial_app.Fragments.Guruhlar.GroupPagerFragment2"
         android:label="fragment_group_pager2"
-        tools:layout="@layout/fragment_group_pager2" >
+        tools:layout="@layout/fragment_group_pager2">
         <action
             android:id="@+id/action_groupPagerFragment2_to_groupDarsFragment"
             app:destination="@id/groupDarsFragment" />
@@ -99,7 +99,7 @@
         android:id="@+id/mentorShowFragment"
         android:name="developer.abdulaziz.my_codial_app.Fragments.Mentorlar.MentorShowFragment"
         android:label="fragment_mentor_show"
-        tools:layout="@layout/fragment_mentor_show" >
+        tools:layout="@layout/fragment_mentor_show">
         <action
             android:id="@+id/action_mentorShowFragment_to_mentorAddFragment"
             app:destination="@id/mentorAddFragment" />
@@ -108,5 +108,22 @@
         android:id="@+id/groupDarsFragment"
         android:name="developer.abdulaziz.my_codial_app.Fragments.Guruhlar.GroupDarsFragment"
         android:label="fragment_group_dars"
-        tools:layout="@layout/fragment_group_dars" />
+        tools:layout="@layout/fragment_group_dars">
+        <action
+            android:id="@+id/action_groupDarsFragment_to_groupTalabaAddFragment"
+            app:destination="@id/groupTalabaAddFragment" />
+        <action
+            android:id="@+id/action_groupDarsFragment_to_groupTalabaEditFragment"
+            app:destination="@id/groupTalabaEditFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/groupTalabaAddFragment"
+        android:name="developer.abdulaziz.my_codial_app.Fragments.Talaba.GroupTalabaAddFragment"
+        android:label="fragment_group_talaba_add"
+        tools:layout="@layout/fragment_group_talaba_add" />
+    <fragment
+        android:id="@+id/groupTalabaEditFragment"
+        android:name="developer.abdulaziz.my_codial_app.Fragments.Talaba.GroupTalabaEditFragment"
+        android:label="fragment_group_talaba_edit"
+        tools:layout="@layout/fragment_group_talaba_edit" />
 </navigation>

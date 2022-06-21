@@ -43,16 +43,16 @@ class MentorShowFragment : Fragment() {
                         val item = ItemMentorEditDialogBinding.inflate(layoutInflater).apply {
                             mentorSurname.setText(mentor.surname)
                             mentorName.setText(mentor.name)
-                            mentorLastname.setText(mentor.lastname)
+                            mentorNumber.setText(mentor.number)
                             close.setOnClickListener { alertDialog.cancel() }
                             save.setOnClickListener {
                                 val surname = mentorSurname.text.toString()
                                 val name = mentorName.text.toString()
-                                val lastname = mentorLastname.text.toString()
-                                if (surname.isNotEmpty() && name.isNotEmpty() && lastname.isNotEmpty()) {
+                                val number = mentorNumber.text.toString()
+                                if (surname.isNotEmpty() && name.isNotEmpty() && number.isNotEmpty()) {
                                     mentor.surname = surname
                                     mentor.name = name
-                                    mentor.lastname = lastname
+                                    mentor.number = number
                                     myDbHelper.updateMentor(mentor)
                                     listMentor[position] = mentor
                                     myMentorAdapter.notifyItemChanged(position)

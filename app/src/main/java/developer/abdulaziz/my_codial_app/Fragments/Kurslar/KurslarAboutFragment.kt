@@ -25,7 +25,6 @@ class KurslarAboutFragment : Fragment() {
         binding = FragmentKurslarAboutBinding.inflate(layoutInflater)
         binding.apply {
             val myDbHelper = MyDbHelper(root.context)
-            val list = myDbHelper.readKurslar()
             val kurslar = MyObject.kurslar
             title.text = "${kurslar.name} Development"
             back.setOnClickListener { findNavController().popBackStack() }
@@ -34,8 +33,21 @@ class KurslarAboutFragment : Fragment() {
                 val alertDialog = AlertDialog.Builder(root.context).create()
                 val item = ItemDeleteBinding.inflate(layoutInflater).apply {
                     save.setOnClickListener {
+                        for (mentor in myDbHelper.readMentor()) {
+                            if (mentor.myKurs == myDbHelper.readKurslar().indexOf(kurslar))
+                                myDbHelper.deleteMentor(mentor)
+                        }
+
+                        for (group in myDbHelper.readGroup()) {
+                            for (talaba in myDbHelper.readTalaba()) {
+                                if (talaba.myGuruh == myDbHelper.readGroup().indexOf(group))
+                                    myDbHelper.deleteTalaba(talaba)
+                            }
+                            if (group.myKurs == myDbHelper.readKurslar().indexOf(kurslar))
+                                myDbHelper.deleteGroup(group)
+                        }
+
                         myDbHelper.deleteKurslar(kurslar)
-                        list.remove(kurslar)
                         alertDialog.cancel()
                         findNavController().popBackStack()
                     }

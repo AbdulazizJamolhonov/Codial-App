@@ -31,12 +31,13 @@
             android:textSize="@dimen/_20ssp" />
 
         <EditText
-            android:id="@+id/mentor_lastname"
+            android:id="@+id/mentor_number"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_56sdp"
             android:layout_marginBottom="@dimen/_20sdp"
             android:background="@drawable/edit_back"
-            android:hint="Otasining ismi"
+            android:inputType="phone"
+            android:hint="Tel. raqami"
             android:paddingStart="@dimen/_16sdp"
             android:textSize="@dimen/_20ssp" />
 

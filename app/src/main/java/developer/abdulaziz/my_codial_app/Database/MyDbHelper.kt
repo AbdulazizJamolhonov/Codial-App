@@ -28,7 +28,7 @@ class MyDbHelper(context: Context) :
         const val MENTOR_ID = "MentorId"
         const val MENTOR_SURNAME = "MentorSurname"
         const val MENTOR_NAME = "MentorName"
-        const val MENTOR_LASTNAME = "MentorLastname"
+        const val MENTOR_NUMBER = "MentorNumber"
         const val MENTOR_KURS = "MentorKurs"
 
         //        Talabalar
@@ -36,7 +36,7 @@ class MyDbHelper(context: Context) :
         const val TALABA_ID = "TalabaId"
         const val TALABA_SURNAME = "TalabaSurname"
         const val TALABA_NAME = "TalabaName"
-        const val TALABA_LASTNAME = "TalabaLastname"
+        const val TALABA_NUMBER = "TalabaNumber"
         const val TALABA_REG_DATA = "TalabaRegData"
         const val TALABA_GROUP = "TalabaGroup"
 
@@ -47,18 +47,19 @@ class MyDbHelper(context: Context) :
         const val GROUP_MENTOR = "GroupMentor"
         const val GROUP_TIME = "GroupTime"
         const val GROUP_DATE = "GroupDate"
-        const val GROUP_MYOPEN = "GroupMyOper"
+        const val GROUP_MYOPEN = "GroupMyOpen"
+        const val GROUP_MYKURS = "GroupMyKurs"
     }
 
     override fun onCreate(p0: SQLiteDatabase?) {
         val kurslar =
             "CREATE TABLE $KURSLAR_TABLE ($KURSLAR_ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, $KURSLAR_NAME TEXT NOT NULL, $KURSLAR_ABOUT TEXT NOT NULL)"
         val mentor =
-            "CREATE TABLE $MENTOR_TABLE ($MENTOR_ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, $MENTOR_SURNAME TEXT NOT NULL, $MENTOR_NAME TEXT NOT NULL, $MENTOR_LASTNAME TEXT NOT NULL, $MENTOR_KURS INTEGER NOT NULL)"
+            "CREATE TABLE $MENTOR_TABLE ($MENTOR_ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, $MENTOR_SURNAME TEXT NOT NULL, $MENTOR_NAME TEXT NOT NULL, $MENTOR_NUMBER TEXT NOT NULL, $MENTOR_KURS INTEGER NOT NULL)"
         val talaba =
-            "CREATE TABLE $TALABA_TABLE ($TALABA_ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, $TALABA_SURNAME TEXT NOT NULL, $TALABA_NAME TEXT NOT NULL, $TALABA_LASTNAME TEXT NOT NULL, $TALABA_REG_DATA TEXT NOT NULL, $TALABA_GROUP INTEGER NOT NULL)"
+            "CREATE TABLE $TALABA_TABLE ($TALABA_ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, $TALABA_SURNAME TEXT NOT NULL, $TALABA_NAME TEXT NOT NULL, $TALABA_NUMBER TEXT NOT NULL, $TALABA_REG_DATA TEXT NOT NULL, $TALABA_GROUP INTEGER NOT NULL)"
         val group =
-            "CREATE TABLE $GROUP_TABLE ($GROUP_ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, $GROUP_NAME TEXT NOT NULL, $GROUP_MENTOR INTEGER NOT NULL, $GROUP_TIME TEXT NOT NULL, $GROUP_DATE TEXT NOT NULL, $GROUP_MYOPEN INTEGER NOT NULL, FOREIGN KEY ($GROUP_MENTOR) REFERENCES $MENTOR_TABLE ($MENTOR_ID))"
+            "CREATE TABLE $GROUP_TABLE ($GROUP_ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, $GROUP_NAME TEXT NOT NULL, $GROUP_MENTOR INTEGER NOT NULL, $GROUP_TIME TEXT NOT NULL, $GROUP_DATE TEXT NOT NULL, $GROUP_MYOPEN INTEGER NOT NULL, $GROUP_MYKURS INTEGER NOT NULL, FOREIGN KEY ($GROUP_MENTOR) REFERENCES $MENTOR_TABLE ($MENTOR_ID))"
         p0?.execSQL(kurslar)
         p0?.execSQL(mentor)
         p0?.execSQL(talaba)
@@ -120,7 +121,7 @@ class MyDbHelper(context: Context) :
         val contentValue = ContentValues().apply {
             put(MENTOR_SURNAME, mentor.surname)
             put(MENTOR_NAME, mentor.name)
-            put(MENTOR_LASTNAME, mentor.lastname)
+            put(MENTOR_NUMBER, mentor.number)
             put(MENTOR_KURS, mentor.myKurs)
         }
         dataBase.insert(MENTOR_TABLE, null, contentValue)
@@ -153,7 +154,7 @@ class MyDbHelper(context: Context) :
         contentValue.put(MENTOR_ID, mentor.id)
         contentValue.put(MENTOR_SURNAME, mentor.surname)
         contentValue.put(MENTOR_NAME, mentor.name)
-        contentValue.put(MENTOR_LASTNAME, mentor.lastname)
+        contentValue.put(MENTOR_NUMBER, mentor.number)
         contentValue.put(MENTOR_KURS, mentor.myKurs)
         return writableDatabase.update(
             MENTOR_TABLE,
@@ -175,7 +176,7 @@ class MyDbHelper(context: Context) :
         val contentValue = ContentValues().apply {
             put(TALABA_SURNAME, talaba.surname)
             put(TALABA_NAME, talaba.name)
-            put(TALABA_LASTNAME, talaba.lastname)
+            put(TALABA_NUMBER, talaba.number)
             put(TALABA_REG_DATA, talaba.regDate)
             put(TALABA_GROUP, talaba.myGuruh)
         }
@@ -210,7 +211,7 @@ class MyDbHelper(context: Context) :
             put(TALABA_ID, talaba.id)
             put(TALABA_SURNAME, talaba.surname)
             put(TALABA_NAME, talaba.name)
-            put(TALABA_LASTNAME, talaba.lastname)
+            put(TALABA_NUMBER, talaba.number)
             put(TALABA_REG_DATA, talaba.regDate)
             put(TALABA_GROUP, talaba.myGuruh)
         }
@@ -237,6 +238,7 @@ class MyDbHelper(context: Context) :
             put(GROUP_TIME, group.time)
             put(GROUP_DATE, group.date)
             put(GROUP_MYOPEN, group.openClose)
+            put(GROUP_MYKURS, group.myKurs)
         }
         dataBase.insert(GROUP_TABLE, null, contentValue)
         dataBase.close()
@@ -256,7 +258,8 @@ class MyDbHelper(context: Context) :
                     getMentorById(cursor.getInt(2)),
                     cursor.getString(3),
                     cursor.getString(4),
-                    cursor.getInt(5)
+                    cursor.getInt(5),
+                    cursor.getInt(6)
                 )
                 list.add(group)
             } while (cursor.moveToNext())
@@ -272,6 +275,7 @@ class MyDbHelper(context: Context) :
         contentValue.put(GROUP_TIME, group.time)
         contentValue.put(GROUP_DATE, group.date)
         contentValue.put(GROUP_MYOPEN, group.openClose)
+        contentValue.put(GROUP_MYKURS, group.myKurs)
         return writableDatabase.update(
             GROUP_TABLE,
             contentValue,
@@ -294,7 +298,7 @@ class MyDbHelper(context: Context) :
                 MENTOR_ID,
                 MENTOR_SURNAME,
                 MENTOR_NAME,
-                MENTOR_LASTNAME,
+                MENTOR_NUMBER,
                 MENTOR_KURS
             ),
             "$MENTOR_ID = ?",

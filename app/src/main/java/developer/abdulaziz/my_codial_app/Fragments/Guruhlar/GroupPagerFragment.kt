@@ -20,9 +20,6 @@ import developer.abdulaziz.my_codial_app.databinding.ItemGroupEditDialogBinding
 class GroupPagerFragment : Fragment() {
     private lateinit var binding: FragmentGroupPagerBinding
     private lateinit var myGroupAdapter: MyGroupAdapter
-    private lateinit var listMentor: ArrayList<String>
-    private lateinit var listGroup: ArrayList<Group>
-    private lateinit var myDbHelper: MyDbHelper
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -30,27 +27,28 @@ class GroupPagerFragment : Fragment() {
     ): View {
         binding = FragmentGroupPagerBinding.inflate(layoutInflater)
         binding.apply {
-            myDbHelper = MyDbHelper(root.context)
+            val myDbHelper = MyDbHelper(root.context)
 
             val mentorList = myDbHelper.readMentor()
-            listMentor = ArrayList()
+            val groupList = myDbHelper.readGroup()
+            val talabaList = myDbHelper.readTalaba()
+
+            val listMentor = ArrayList<String>()
             for (e in mentorList) {
                 if (e.myKurs == MyObject.positionKurs) listMentor.add("${e.name}")
             }
 
-            listGroup = ArrayList()
-            for (i in myDbHelper.readGroup()) {
-                if (i.openClose == 0)
-                    listGroup.add(i)
+            val listGroup = ArrayList<Group>()
+            for (i in groupList) {
+                if (i.openClose == 0 && i.myKurs == MyObject.positionKurs) listGroup.add(i)
             }
 
-            myGroupAdapter = MyGroupAdapter(
-                listGroup,
-                myDbHelper.readTalaba(),
+            myGroupAdapter = MyGroupAdapter(listGroup, talabaList,
                 object : MyGroupAdapter.OnMenuClickListener {
                     override fun onShow(group: Group, position: Int) {
                         MyObject.group = group
-                        MyObject.positionGroup = position
+                        MyObject.positionGuruh = position
+                        MyObject.openClose = 0
                         findNavController().navigate(R.id.groupDarsFragment)
                     }
 

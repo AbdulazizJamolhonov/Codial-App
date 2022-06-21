@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.Mentorlar.MentorAddFragment">
+    tools:context=".Fragments.Talaba.GroupTalabaAddFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/action_bar"
@@ -31,7 +31,7 @@
             android:layout_gravity="center"
             android:layout_marginStart="@dimen/_12sdp"
             android:gravity="center"
-            android:text="Barcha kurslar"
+            android:text="Talaba qo'shish"
             android:textColor="@color/black"
             android:textSize="@dimen/_20ssp"
             app:layout_constraintLeft_toRightOf="@id/back" />
@@ -42,48 +42,79 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:padding="@dimen/_16sdp"
-        app:layout_constraintHeight_percent="0.5"
+        app:layout_constraintHeight_percent="0.55"
         app:layout_constraintTop_toBottomOf="@id/action_bar">
 
         <EditText
-            android:id="@+id/mentor_surname"
+            android:id="@+id/talaba_surname"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginBottom="@dimen/_12sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
             android:background="@drawable/edit_back"
             android:hint="Familiyasi"
             android:paddingStart="@dimen/_16sdp"
             android:textSize="@dimen/_20ssp"
-            app:layout_constraintBottom_toTopOf="@id/mentor_name"
-            app:layout_constraintHeight_percent="0.25"
+            app:layout_constraintBottom_toTopOf="@id/talaba_name"
+            app:layout_constraintHeight_percent="0.225"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/mentor_name"
+            android:id="@+id/talaba_name"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginBottom="@dimen/_12sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
             android:background="@drawable/edit_back"
             android:hint="Ismi"
             android:paddingStart="@dimen/_16sdp"
             android:textSize="@dimen/_20ssp"
-            app:layout_constraintBottom_toTopOf="@id/mentor_number"
-            app:layout_constraintHeight_percent="0.25"
-            app:layout_constraintTop_toBottomOf="@id/mentor_surname" />
+            app:layout_constraintBottom_toTopOf="@id/talaba_number"
+            app:layout_constraintHeight_percent="0.225"
+            app:layout_constraintTop_toBottomOf="@id/talaba_surname" />
 
         <EditText
-            android:id="@+id/mentor_number"
+            android:id="@+id/talaba_number"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginBottom="@dimen/_12sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
             android:background="@drawable/edit_back"
-            android:inputType="phone"
             android:hint="Tel. raqami"
+            android:inputType="phone"
             android:paddingStart="@dimen/_16sdp"
             android:textSize="@dimen/_20ssp"
+            app:layout_constraintBottom_toTopOf="@id/talaba_date"
+            app:layout_constraintHeight_percent="0.225"
+            app:layout_constraintTop_toBottomOf="@id/talaba_name" />
+
+        <LinearLayout
+            android:id="@+id/talaba_date"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/edit_back"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHeight_percent="0.25"
-            app:layout_constraintTop_toBottomOf="@id/mentor_name" />
+            app:layout_constraintHeight_percent="0.225"
+            app:layout_constraintTop_toBottomOf="@id/talaba_number">
+
+            <TextView
+                android:id="@+id/date_text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center|start"
+                android:paddingStart="@dimen/_16sdp"
+                android:text="31/12/2020"
+                android:textSize="@dimen/_20ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHeight_percent="0.225"
+                app:layout_constraintTop_toBottomOf="@id/talaba_name" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:paddingEnd="@dimen/_16sdp"
+                android:src="@drawable/talaba_date" />
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -92,7 +123,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="@dimen/_16sdp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/yellow"
         app:cardCornerRadius="@dimen/_16sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHeight_percent="0.1"
@@ -103,7 +134,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="Qo'shish"
+            android:text="Saqlash"
             android:textColor="@color/white"
             android:textSize="@dimen/_22ssp" />
 

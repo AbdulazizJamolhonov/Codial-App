@@ -20,8 +20,6 @@ import developer.abdulaziz.my_codial_app.databinding.ItemGroupEditDialogBinding
 class GroupPagerFragment2 : Fragment() {
     private lateinit var binding: FragmentGroupPager2Binding
     private lateinit var myGroupAdapter: MyGroupAdapter
-    private lateinit var listMentor: ArrayList<String>
-    private lateinit var listGroup: ArrayList<Group>
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -32,23 +30,24 @@ class GroupPagerFragment2 : Fragment() {
             val myDbHelper = MyDbHelper(root.context)
 
             val mentorList = myDbHelper.readMentor()
-            listGroup = ArrayList()
-            for (i in myDbHelper.readGroup()) {
-                if (i.openClose == 1) listGroup.add(i)
-            }
+            val groupList = myDbHelper.readGroup()
+            val talabaList = myDbHelper.readTalaba()
 
-            listMentor = ArrayList()
+            val listMentor = ArrayList<String>()
             for (e in mentorList) {
                 if (e.myKurs == MyObject.positionKurs) listMentor.add("${e.name}")
             }
 
-            myGroupAdapter = MyGroupAdapter(
-                listGroup,
-                myDbHelper.readTalaba(),
+            val listGroup = ArrayList<Group>()
+            for (i in groupList) {
+                if (i.openClose == 1 && i.myKurs == MyObject.positionKurs) listGroup.add(i)
+            }
+            myGroupAdapter = MyGroupAdapter(listGroup, talabaList,
                 object : MyGroupAdapter.OnMenuClickListener {
                     override fun onShow(group: Group, position: Int) {
                         MyObject.group = group
-                        MyObject.positionGroup = position
+                        MyObject.openClose = 1
+                        MyObject.positionGuruh = position
                         findNavController().navigate(R.id.groupDarsFragment)
                     }
 
@@ -101,6 +100,7 @@ class GroupPagerFragment2 : Fragment() {
                         alertDialog.show()
                     }
                 })
+            rvGuruhlarShow.adapter = myGroupAdapter
             return root
         }
     }

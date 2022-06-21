@@ -11,9 +11,9 @@ class MyMentorAdapter(
     private var list: ArrayList<Mentor>,
     private var onItemClickListener: OnMenuClickListener
 ) :
-    RecyclerView.Adapter<MyMentorAdapter.ViewHolderMenu>() {
+    RecyclerView.Adapter<MyMentorAdapter.ViewHolderMentor>() {
 
-    inner class ViewHolderMenu(private val binding: ItemAddMentorBinding) :
+    inner class ViewHolderMentor(private val binding: ItemAddMentorBinding) :
         RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
         fun onBind(mentor: Mentor, position: Int) {
@@ -25,12 +25,12 @@ class MyMentorAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderMenu {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderMentor {
         val bin = ItemAddMentorBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ViewHolderMenu(bin)
+        return ViewHolderMentor(bin)
     }
 
-    override fun onBindViewHolder(holder: ViewHolderMenu, position: Int) =
+    override fun onBindViewHolder(holder: ViewHolderMentor, position: Int) =
         holder.onBind(list[position], position)
 
     override fun getItemCount(): Int = list.size

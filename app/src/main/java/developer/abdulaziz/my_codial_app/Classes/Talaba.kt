@@ -4,7 +4,7 @@ class Talaba {
     var id: Int? = null
     var surname: String? = null
     var name: String? = null
-    var lastname: String? = null
+    var number: String? = null
     var regDate: String? = null
     var myGuruh: Int? = null
 
@@ -13,14 +13,14 @@ class Talaba {
         id: Int?,
         surname: String?,
         name: String?,
-        lastname: String?,
+        number: String?,
         regDate: String?,
         myGuruh: Int?
     ) {
         this.id = id
         this.surname = surname
         this.name = name
-        this.lastname = lastname
+        this.number = number
         this.regDate = regDate
         this.myGuruh = myGuruh
     }
@@ -28,13 +28,13 @@ class Talaba {
     constructor(
         surname: String?,
         name: String?,
-        lastname: String?,
+        number: String?,
         regDate: String?,
         myGuruh: Int?
     ) {
         this.surname = surname
         this.name = name
-        this.lastname = lastname
+        this.number = number
         this.regDate = regDate
         this.myGuruh = myGuruh
     }
