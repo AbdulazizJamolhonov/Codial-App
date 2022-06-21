@@ -21,7 +21,6 @@ class GroupPagerFragment : Fragment() {
     private lateinit var binding: FragmentGroupPagerBinding
     private lateinit var myGroupAdapter: MyGroupAdapter
     private lateinit var listMentor: ArrayList<String>
-    private lateinit var listTime: ArrayList<String>
     private lateinit var listGroup: ArrayList<Group>
     private lateinit var myDbHelper: MyDbHelper
     override fun onCreateView(
@@ -36,7 +35,7 @@ class GroupPagerFragment : Fragment() {
             val mentorList = myDbHelper.readMentor()
             listMentor = ArrayList()
             for (e in mentorList) {
-                if (e.myKurs == MyObject.positionKurs) listMentor.add("${e.name} ${e.surname}")
+                if (e.myKurs == MyObject.positionKurs) listMentor.add("${e.name}")
             }
 
             listGroup = ArrayList()
@@ -45,11 +44,6 @@ class GroupPagerFragment : Fragment() {
                     listGroup.add(i)
             }
 
-            listTime = ArrayList()
-            listTime.add("12:00 - 14:00")
-            listTime.add("14:00 - 16:00")
-            listTime.add("16:00 - 18:00")
-            listTime.add("18:00 - 20:00")
             myGroupAdapter = MyGroupAdapter(
                 listGroup,
                 myDbHelper.readTalaba(),
@@ -72,12 +66,12 @@ class GroupPagerFragment : Fragment() {
                             spinnerTime.adapter = ArrayAdapter(
                                 root.context,
                                 android.R.layout.simple_expandable_list_item_1,
-                                listTime
+                                MyObject.listTime
                             )
                             save.setOnClickListener {
                                 val name = groupName.text.toString()
                                 val mentor = mentorList[spinnerMentor.selectedItemPosition]
-                                val time = listTime[spinnerTime.selectedItemPosition]
+                                val time = MyObject.listTime[spinnerTime.selectedItemPosition]
                                 if (name.isNotEmpty() && time.isNotEmpty()) {
                                     group.name = name
                                     group.time = time
