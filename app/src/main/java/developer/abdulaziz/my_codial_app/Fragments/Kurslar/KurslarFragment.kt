@@ -54,6 +54,7 @@ class KurslarFragment : Fragment() {
             kurslarAdapterMy = MyUniversalAdapter(list, object : MyUniversalAdapter.OnMenuClickListener {
                 override fun onClick(kurslar: Kurslar, position: Int) {
                     MyObject.kurslar = kurslar
+                    MyObject.positionKurs = position
                     findNavController().navigate(R.id.kurslarAboutFragment)
                 }
             })
