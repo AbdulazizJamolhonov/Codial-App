@@ -39,17 +39,17 @@ class KurslarAboutFragment : Fragment() {
                                 myDbHelper.deleteMentor(mentor)
                         }
 
-                        for (talaba in myDbHelper.readTalaba()) {
-                            for (talabaGroup in myDbHelper.readGroup()) {
-                                if (talaba.myGuruh == myDbHelper.readGroup().indexOf(talabaGroup))
-                                    myDbHelper.deleteTalaba(talaba)
-                            }
-                        }
-
-                        for (group in myDbHelper.readGroup()) {
-                            if (group.myKurs == position)
-                                myDbHelper.deleteGroup(group)
-                        }
+//                        for (talaba in myDbHelper.readTalaba()) {
+//                            for (talabaGroup in myDbHelper.readGroup()) {
+//                                if (talaba.myGuruh == myDbHelper.readGroup().indexOf(talabaGroup))
+//                                    myDbHelper.deleteTalaba(talaba)
+//                            }
+//                        }
+//
+//                        for (group in myDbHelper.readGroup()) {
+//                            if (group.myKurs == position)
+//                                myDbHelper.deleteGroup(group)
+//                        }
 
                         myDbHelper.deleteKurslar(kurslar)
                         alertDialog.cancel()
