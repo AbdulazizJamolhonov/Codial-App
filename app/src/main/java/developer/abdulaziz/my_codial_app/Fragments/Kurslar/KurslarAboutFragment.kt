@@ -35,8 +35,7 @@ class KurslarAboutFragment : Fragment() {
                 val item = ItemDeleteBinding.inflate(layoutInflater).apply {
                     save.setOnClickListener {
                         for (mentor in myDbHelper.readMentor()) {
-                            if (mentor.myKurs == position)
-                                myDbHelper.deleteMentor(mentor)
+                            if (mentor.myKurs == position) myDbHelper.deleteMentor(mentor)
                         }
 
 //                        for (talaba in myDbHelper.readTalaba()) {
@@ -47,8 +46,7 @@ class KurslarAboutFragment : Fragment() {
 //                        }
 //
 //                        for (group in myDbHelper.readGroup()) {
-//                            if (group.myKurs == position)
-//                                myDbHelper.deleteGroup(group)
+//                            if (group.myKurs == position) myDbHelper.deleteGroup(group)
 //                        }
 
                         myDbHelper.deleteKurslar(kurslar)

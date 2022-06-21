@@ -2,6 +2,7 @@ package developer.abdulaziz.my_codial_app.Fragments.Guruhlar
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -45,16 +46,20 @@ class GroupDarsFragment : Fragment() {
                 startDars.setOnClickListener {
                     group.openClose = 1
                     myDbHelper.updateGroup(group)
+                    startDars.isClickable = false
                     MyObject.openClose = 1
-                    it.visibility = View.GONE
+                    textStart.textSize = 20F
+                    textStart.text = "Guruhga dars boshlandi"
                 }
             } else startDars.visibility = View.GONE
 
             startDars.setOnClickListener {
                 group.openClose = 1
                 myDbHelper.updateGroup(group)
+                startDars.isClickable = false
                 MyObject.openClose = 1
-                it.visibility = View.GONE
+                textStart.textSize = 20F
+                textStart.text = "Guruhga dars boshlandi"
             }
             add.setOnClickListener { findNavController().navigate(R.id.groupTalabaAddFragment) }
             back.setOnClickListener { findNavController().popBackStack() }

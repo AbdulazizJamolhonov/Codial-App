@@ -1,16 +1,16 @@
 package developer.abdulaziz.my_codial_app.Fragments.Talaba
 
-import android.app.DatePickerDialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import developer.abdulaziz.my_codial_app.Classes.Talaba
 import developer.abdulaziz.my_codial_app.Database.MyDbHelper
 import developer.abdulaziz.my_codial_app.Object.MyObject
 import developer.abdulaziz.my_codial_app.databinding.FragmentGroupTalabaAddBinding
+import java.time.LocalDate
 
 class GroupTalabaAddFragment : Fragment() {
     private lateinit var binding: FragmentGroupTalabaAddBinding
@@ -22,13 +22,15 @@ class GroupTalabaAddFragment : Fragment() {
         binding = FragmentGroupTalabaAddBinding.inflate(layoutInflater)
         binding.apply {
             val myDbHelper = MyDbHelper(root.context)
-            talabaDate.setOnClickListener {
-                val dataPickerDialog = DatePickerDialog(root.context)
-                dataPickerDialog.setOnDateSetListener { datePicker, i, i2, i3 ->
-                    dateText.text = "$i3/${i2 + 1}/$i"
-                }
-                dataPickerDialog.show()
-            }
+
+            val month =
+                if (LocalDate.now().monthValue.toString().length == 1) "0${LocalDate.now().monthValue}"
+                else "${LocalDate.now().monthValue}"
+            val day =
+                if (LocalDate.now().dayOfMonth.toString().length == 1) "0${LocalDate.now().dayOfMonth}"
+                else "${LocalDate.now().dayOfMonth}"
+            dateText.text = "$day/$month/${LocalDate.now().year}"
+
             back.setOnClickListener { findNavController().popBackStack() }
             save.setOnClickListener {
                 val surname = talabaSurname.text.toString()
