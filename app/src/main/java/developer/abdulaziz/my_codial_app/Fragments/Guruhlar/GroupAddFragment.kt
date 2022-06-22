@@ -48,11 +48,11 @@ class GroupAddFragment : Fragment() {
             back.setOnClickListener { findNavController().popBackStack() }
             save.setOnClickListener {
                 val name = groupName.text.toString()
-                val mentor = listMentor[spinnerMentor.selectedItemPosition]
                 val time = listTime[spinnerTime.selectedItemPosition]
                 val date = listDate[spinnerDate.selectedItemPosition]
 
-                if (name.isNotEmpty() && time.isNotEmpty() && date.isNotEmpty()) {
+                if (name.isNotEmpty() && time.isNotEmpty() && date.isNotEmpty() && listMentor.isNotEmpty()) {
+                    val mentor = listMentor[spinnerMentor.selectedItemPosition]
                     val group = Group(
                         name,
                         mentor,
